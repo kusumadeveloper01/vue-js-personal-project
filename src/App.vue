@@ -5,12 +5,21 @@
     </div>
 
     <div>
-      <ul class="flex flex-col gap-5">
-        <li v-for="item in data" class="flex items-center gap-2" :key="item.id">
-          {{ item.title }}
+      <h1 class="text-2xl font-medium">To do</h1>
+      <div class="border-[0.5px] border-b mt-5 w-full"></div>
+      <ul class="flex flex-col gap-5 mt-5">
+        <li v-for="item in data" class="flex items-center w-full justify-between" :key="item.id">
+          <div class="flex items-center gap-2">
+            <input type="checkbox">
+            <p>
+              {{ item.title }}
+            </p>
+          </div>
 
-          <button @click="edit(item)">edit</button>
-          <button @click="remove(item.id)">delete</button>
+          <div class="flex items-center gap-2">
+            <i class="ri-edit-line cursor-pointer text-blue-500" @click="edit(item)"></i>
+            <i class="ri-delete-bin-5-line cursor-pointer text-red-500" @click="remove(item.id)"></i>
+          </div>
         </li>
       </ul>
 
