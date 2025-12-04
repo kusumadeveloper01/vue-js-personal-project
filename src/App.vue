@@ -10,7 +10,7 @@
       <ul class="flex flex-col gap-5 mt-5">
         <li v-for="item in data" class="flex items-center w-full justify-between" :key="item.id">
           <div class="flex items-center gap-2">
-            <input type="checkbox">
+            <input checked="" class="check" type="checkbox">
             <p>
               {{ item.title }}
             </p>
@@ -23,11 +23,15 @@
         </li>
       </ul>
 
-      <div class="flex flex-col items-start gap-2 mt-5">
-        <small class="text-red-500">{{ errorMsg }}</small>
-        <input class="border border-black" type="text" v-model="title">
-        <button type="submit" v-if="!isEdit" @click="create">Add</button>
-        <button type="submit" v-else @click="update">Update</button>
+      <small class="text-red-500">{{ errorMsg }}</small>
+      <div class="flex flex-row items-center justify-between w-full mt-5">
+        <input placeholder="add new task..." class="placeholder:text-gray-500 outline-none py-2" type="text"
+          v-model="title">
+
+        <div>
+          <button type="submit" v-if="!isEdit" @click="create">Add</button>
+          <button type="submit" v-else @click="update">Update</button>
+        </div>
       </div>
     </div>
   </div>
@@ -92,4 +96,59 @@ const remove = (id) => {
 
 </script>
 
-<style scoped></style>
+<style scoped>
+/* From Uiverse.io by ke1221 */
+.check {
+  position: relative;
+  width: 15px;
+  height: 15px;
+  border-radius: 2px;
+  appearance: none;
+  background-color: #bbb;
+  transition: all .3s;
+}
+
+.check::before {
+  content: '';
+  position: absolute;
+  border: solid #fff;
+  display: block;
+  width: .3em;
+  height: .6em;
+  border-width: 0 .2em .2em 0;
+  z-index: 1;
+  opacity: 0;
+  right: calc(60% - .3em);
+  top: calc(80% - .6em);
+  transform: rotate(0deg);
+  transition: all .3s;
+  transform-origin: center center;
+}
+
+.check:checked {
+  animation: a .3s ease-in forwards;
+  background-color: rgb(120, 190, 120);
+}
+
+.check:checked::before {
+  opacity: 1;
+  transform: rotate(405deg);
+}
+
+@keyframes a {
+  0% {
+    opacity: 1;
+    transform: scale(1) rotateY(0deg);
+  }
+
+  50% {
+    opacity: 0;
+    transform: scale(.8) rotateY(180deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) rotateY(360deg);
+  }
+}
+</style>
