@@ -1,8 +1,8 @@
 <template>
-  <div class="h-screen grid grid-cols-2 w-full max-w-[80%] mx-auto py-14">
-    <div class="">
+  <div class="h-screen grid grid-cols-[50%] justify-center w-full max-w-[80%] mx-auto py-14">
+    <!-- <div class="">
 
-    </div>
+    </div> -->
 
     <div>
       <h1 class="text-2xl font-medium">To do</h1>
@@ -10,7 +10,7 @@
       <ul class="flex flex-col gap-5 mt-5">
         <li v-for="item in data" class="flex items-center w-full justify-between" :key="item.id">
           <div class="flex items-center gap-2">
-            <input checked="" class="check" type="checkbox">
+            <input v-model="item.complete" class="check cursor-pointer" type="checkbox">
             <p>
               {{ item.title }}
             </p>
@@ -24,12 +24,12 @@
       </ul>
 
       <small class="text-red-500">{{ errorMsg }}</small>
-      <div class="flex flex-row items-center justify-between w-full mt-5">
-        <input placeholder="add new task..." class="placeholder:text-gray-500 outline-none py-2" type="text"
+      <div class="flex flex-row items-end justify-between w-full mt-5 gap-5">
+        <input placeholder="add new task..." class="placeholder:text-gray-500 border-b outline-none w-full" type="text"
           v-model="title">
 
         <div>
-          <button type="submit" v-if="!isEdit" @click="create">Add</button>
+          <i class="ri-add-line" v-if="!isEdit" @click="create"></i>
           <button type="submit" v-else @click="update">Update</button>
         </div>
       </div>
@@ -38,7 +38,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 
 let title = ref('');
 let data = ref(JSON.parse(localStorage.getItem('data')) || []);
@@ -54,7 +54,8 @@ const create = () => {
 
   data.value.push({
     id: data.value.length + 1,
-    title: title.value
+    title: title.value,
+    complete: false
   })
 
   title.value = '';
@@ -93,6 +94,10 @@ const remove = (id) => {
   data.value = data.value.filter(i => i.id !== id);
   localStorage.setItem('data', JSON.stringify(data.value));
 }
+
+watch(data, (val) => {
+  localStorage.setItem('data', JSON.stringify(val));
+}, { deep: true })
 
 </script>
 
