@@ -7,9 +7,14 @@
         <div class="flex flex-col gap-1">
             <h1 class="text-xl font-semibold text-black">{{ name }}</h1>
             <p class="text-lg font-medium">{{ price }}$</p>
-            <a :href="id" class="w-full">
-                <button class="bg-blue-500 w-full text-white py-2 rounded-sm">beli</button>
-            </a>
+            <div class="flex items-center gap-2">
+                <a :href="id" class="w-full">
+                    <button class="bg-blue-500 w-full text-white py-2 rounded-sm">beli</button>
+                </a>
+                <a :href="id" class="w-full">
+                    <button class="bg-blue-500 w-full text-white py-2 rounded-sm">+ keranjang</button>
+                </a>
+            </div>
         </div>
     </div>
 </template>

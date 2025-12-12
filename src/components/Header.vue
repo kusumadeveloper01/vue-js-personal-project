@@ -4,7 +4,8 @@
             selamat datang di narel store
         </h1>
 
-
-        <i class="ri-shopping-cart-2-line text-white text-2xl"></i>
+        <router-link to="/cart">
+            <i class="ri-shopping-cart-2-line text-white text-2xl"></i>
+        </router-link>
     </div>
 </template>
