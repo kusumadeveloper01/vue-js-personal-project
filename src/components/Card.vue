@@ -31,5 +31,6 @@ defineProps({
 
 function saveToLocalStorage(image, name, price) {
     localStorage.setItem('cart_user', JSON.stringify(image, name, price))
+    alert('produk berhasil ditambahkan ke keranjang')
 }
 </script>
