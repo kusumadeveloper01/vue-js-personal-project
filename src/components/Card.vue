@@ -11,7 +11,7 @@
                 <a :href="id" class="w-full">
                     <button class="bg-blue-500 w-full text-white py-2 rounded-sm">beli</button>
                 </a>
-                <a @click.prevent="saveToLocalStorage(image, name, price)" class="w-full">
+                <a @click.prevent="saveToLocalStorage(id, image, name, price)" class="w-full">
                     <button class="bg-blue-500 w-full text-white py-2 rounded-sm">add cart</button>
                 </a>
             </div>
@@ -31,6 +31,7 @@ defineProps({
 
 function saveToLocalStorage(image, name, price) {
     const newProduct = {
+        id,
         image,
         name,
         price
