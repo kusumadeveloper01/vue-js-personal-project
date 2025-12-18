@@ -12,7 +12,7 @@
                     <button class="bg-blue-500 w-full text-white py-2 rounded-sm">beli</button>
                 </a>
                 <a @click.prevent="saveToLocalStorage(image, name, price)" class="w-full">
-                    <button class="bg-blue-500 w-full text-white py-2 rounded-sm">+ keranjang</button>
+                    <button class="bg-blue-500 w-full text-white py-2 rounded-sm">add cart</button>
                 </a>
             </div>
         </div>
@@ -30,7 +30,18 @@ defineProps({
 })
 
 function saveToLocalStorage(image, name, price) {
-    localStorage.setItem('cart_user', JSON.stringify(image, name, price))
+    const newProduct = {
+        image,
+        name,
+        price
+    }
+
+    let cart = JSON.parse(localStorage.getItem('cart_user')) || []
+
+    cart.push(newProduct);
+
+    localStorage.setItem('cart_user', JSON.stringify(cart))
+
     alert('produk berhasil ditambahkan ke keranjang')
 }
 </script>
