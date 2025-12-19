@@ -29,7 +29,7 @@ defineProps({
     price: Number
 })
 
-function saveToLocalStorage(image, name, price) {
+function saveToLocalStorage(id, image, name, price) {
     const newProduct = {
         id,
         image,
