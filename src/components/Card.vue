@@ -8,9 +8,9 @@
             <h1 class="text-xl font-semibold text-black">{{ name }}</h1>
             <p class="text-lg font-medium">{{ price }}$</p>
             <div class="flex items-center gap-2">
-                <a :href="id" class="w-full">
+                <router-link :to="{ name: 'checkout', params: { id } }" class="w-full">
                     <button class="bg-blue-500 w-full text-white py-2 rounded-sm">beli</button>
-                </a>
+                </router-link>
                 <a @click.prevent="saveToLocalStorage(id, image, name, price)" class="w-full">
                     <button class="bg-blue-500 w-full text-white py-2 rounded-sm">add cart</button>
                 </a>

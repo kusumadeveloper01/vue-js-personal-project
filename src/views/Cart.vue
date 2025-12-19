@@ -38,8 +38,6 @@ onMounted(() => {
 const remove = (id) => {
     cart.value = cart.value.filter(i => i.id !== id);
     localStorage.setItem('cart_user', JSON.stringify(cart.value));
+    alert('produk berhasil dihapus dari keranjang!')
 }
-
-
-
 </script>
