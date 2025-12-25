@@ -1,4 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
+import AdminLogin from "../views/AdminLogin.vue";
+import UserLayout from "../layouts/UserLayout.vue";
+import AdminLayout from "../layouts/AdminLayout.vue";
 import Product from "../views/Product.vue";
 import Cart from "../views/Cart.vue";
 import Checkout from "../views/Checkout.vue";
@@ -9,24 +12,24 @@ const router = createRouter({
 
   routes: [
     {
+      path: "/admin/login",
+      name: "admin-login",
+      component: AdminLogin,
+    },
+    {
       path: "/",
-      name: "product",
-      component: Product,
+      name: "user-layout",
+      component: UserLayout,
+      children: [
+        { path: "/", component: Product },
+        { path: "cart", component: Cart },
+        { name: "checkout", path: "checkout/:id", component: Checkout },
+      ],
     },
     {
-      path: "/cart",
-      name: "cart",
-      component: Cart,
-    },
-    {
-      path: "/checkout/:id",
-      name: "checkout",
-      component: Checkout,
-    },
-    {
-      path: "/create-product",
-      name: "create-product",
-      component: CreateProduct,
+      path: "/admin",
+      name: "admin-layout",
+      component: AdminLayout,
     },
   ],
 });

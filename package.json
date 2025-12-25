@@ -16,6 +16,7 @@
     "@editorjs/embed": "^2.7.7",
     "@editorjs/header": "^2.8.8",
     "@editorjs/list": "^2.0.9",
+    "flowbite": "^4.0.1",
     "vue": "^3.5.18",
     "vue-router": "^4.6.4"
   },
