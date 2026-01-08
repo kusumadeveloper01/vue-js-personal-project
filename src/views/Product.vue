@@ -1,5 +1,5 @@
 <template>
-    <div class="grid grid-cols-4 gap-5 p-10">
+    <div class="grid grid-cols-4 gap-10 p-10">
         <Card v-for="hp in phones" :key="hp.name" :id="hp.id" :image="hp.image" :name="hp.name" :price="hp.price">
         </Card>
     </div>

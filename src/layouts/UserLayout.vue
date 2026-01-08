@@ -1,7 +1,9 @@
 <template>
     <Header></Header>
 
-    <router-view></router-view>
+    <div class="mt-14">
+        <router-view></router-view>
+    </div>
 </template>
 
 <script setup>

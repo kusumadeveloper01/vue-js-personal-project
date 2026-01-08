@@ -30,6 +30,13 @@ const router = createRouter({
       path: "/admin",
       name: "admin-layout",
       component: AdminLayout,
+      children: [
+        { path: "/", component: Product },
+        { path: "/admin/products", component: Product },
+        { path: "/admin/orders", component: Product },
+        { path: "/admin/users", component: Product },
+        { path: "/admin/panel", component: CreateProduct },
+      ],
     },
   ],
 });
